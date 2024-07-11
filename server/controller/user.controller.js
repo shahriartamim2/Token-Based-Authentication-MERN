@@ -58,7 +58,7 @@ const loginUser = async (req, res) => {
                     res.status(200).send({
                         success: true,
                         message: "Logged in successfully",
-                        token: "Bearer" + token
+                        token: "Bearer " + token
 
                     })
                 }
@@ -84,4 +84,16 @@ const loginUser = async (req, res) => {
     }
 }
 
-export {registerUser, loginUser}
+const getProfile = (req, res) =>{
+    res.send({
+        success:true,
+        user:{
+            id: req.user._id,
+            username:req.user.username,
+        }
+    });
+}
+
+
+
+export {registerUser, loginUser, getProfile}
